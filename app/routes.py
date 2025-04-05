@@ -7,9 +7,9 @@ from .models import db, Habit
 main = Blueprint('main', __name__)
 
 @main.route('/')
-def index():
+def home():
     habits = Habit.query.all()
-    return render_template('index.html', habits=habits)
+    return render_template('home.html', habits=habits)
 
 @main.route('/add', methods=['GET', 'POST'])
 def add_habit():
@@ -21,6 +21,6 @@ def add_habit():
         db.session.add(new_habit)
         db.session.commit()
 
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.home'))
     
     return render_template('add_habit.html')

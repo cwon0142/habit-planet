@@ -1,0 +1,39 @@
+<!-- app/templates/index.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 class="mt-5">Habit Planet</h1>
+
+<p>Welcome to Habit Planet! Create and manage a solar system of habits and watch your progress soar!</p>
+
+<a href="{{url_for('main.add_habit') }}" class="btn btn-primary">Add New Habit</a>
+
+<!-- Horizontal break -->
+<hr> 
+
+<table class="table mt-3">
+    <!-- Table head -->
+    <thead> 
+        <!-- Row in table -->
+        <tr> 
+            <!-- Header cells -->
+            <th>Name</th>
+            <th>Description</th>
+            <th>Streak</th>
+            <th>Last Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for habit in habits %}
+        <tr>
+            <td>{{ habit.name }}</td>
+            <td>{{ habit.description }}</td>
+            <td>{{ habit.streak }}</td>
+            <td>{{ habit.last_completed }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
