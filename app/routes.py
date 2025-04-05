@@ -11,7 +11,7 @@ def index():
     habits = Habit.query.all()
     return render_template('index.html', habits=habits)
 
-@main.route('add', methods=['GET', 'POST'])
+@main.route('/add', methods=['GET', 'POST'])
 def add_habit():
     if request.method == 'POST':
         name = request.form['name']
